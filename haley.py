@@ -69,7 +69,7 @@ class Haley(threading.Thread):
                 message = buff.split("\n", 1)[0]
                 buff = buff.split("\n",1)[1]
                 logging.log(LOGLEVEL_RECV, message)
-                if "checking ident" in message.lower():
+                if "Found your" in message or "checking ident" in message.lower():
                     self.send("USER %s %s s: %s" % (self.nickname, self.nickname, self.nickname))
                     self.send("NICK %s" % self.nickname)
                 elif "nickname is already in use" in message.lower():
